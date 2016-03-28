@@ -3,8 +3,8 @@
 <sdks>
 <sdk 		version="1.0.0"
             description="Test SDK loaded from GIT"
-            name="test2"
-			cores="KEAZ128M4:Cortex-M0+,KEAZ64M4:Cortex-M0+">
+            name="dungtp2"
+			cores="S32K144:M4">
          <headerFolder
                copy="false"
                path="/">

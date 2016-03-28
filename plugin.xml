@@ -60,7 +60,7 @@
    </extension>
   <extension point="com.freescale.s32ds.cross.sdk.support.sdks">
       <sdk	version="1.0.0"
-			name="test2"
+			name="dungtp2"
             description="Test SDK loaded from GIT"
             basePath=""
             internalPath="false"

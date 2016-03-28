@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
 <sdks>
 
-<sdk 		version="1"
+<sdk 		version="1.0.0"
             description="Test SDK loaded from GIT"
             langs="c only"
             name="test2"

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="sdks" name="SDK extension" schema="schema/sdks.exsd"/>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="com.freescale.s32ds.cross.sdk.ui.SDKExplorer"
+            id="com.freescale.s32ds.cdt.sdk.ui.Explorer"
+            name="%SDKExplorer.name"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="com.freescale.s32ds.cross.sdk.ui.SDKPropertyPage"
+            id="com.freescale.s32ds.cdt.sdk.properties.sdkManagementPage"
+            name="%PropertyPage.name">
+         <enabledWhen>
+            <and>
+                <or>
+                    <instanceof
+                        value="org.eclipse.core.resources.IProject">
+                    </instanceof>
+                    <instanceof
+                        value="org.eclipse.cdt.core.model.ICProject">
+                    </instanceof>
+                </or>
+                <adapt type="org.eclipse.core.resources.IProject">    
+                   <test
+                      property="org.eclipse.core.resources.open"
+                      value="open">
+                   </test>
+                </adapt>
+            </and>
+         </enabledWhen>
+      </page>
+   </extension>
+    <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.cdt.ui.CPerspective">
+         <view
+               id="com.freescale.s32ds.cdt.sdk.ui.Explorer"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.views.ContentOutline"
+               visible="true">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="com.freescale.s32ds.cross.sdk.ui.SDKPreferencePage"
+            id="com.freescale.s32ds.cdt.sdk.preferences.sdkManagementPage"
+            name="%PreferencePage.name">
+      </page>
+   </extension>
+  <extension point="com.freescale.s32ds.cross.sdk.support.sdks">
+      <sdk	version="1.0.0"
+			name="test2"
+            description="Test SDK loaded from GIT"
+            basePath=""
+            internalPath="false"
+			cores="S32K144:M4"
+			symbols="" 
+			toolchains=""
+            gitBranch="master"
+            gitPath="https://github.com/dungtp2/B54189.git">
+		<sourceFile copy="false" path="src\main.c"/>
+		<sourceFile copy="false" path="src\a.c"/>
+		<headerFile copy="false" path="inc\"/>
+		<headerFile copy="false" path="inc\a.h"/>
+		<resourceFile copy="true" path="doc\a.rtf"/>
+      </sdk>
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="com.freescale.s32ds.cross.sdk.SDKSupportPlugin">
+      </startup>
+   </extension>
+
+</plugin>

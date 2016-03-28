@@ -4,15 +4,14 @@
 <sdk 		version="1.0.0"
             description="Test SDK loaded from GIT"
             name="test2"
-            basePath=""
-            internalPath="false"
-			cores="S32K144:M4"
-			symbols="" 
-			toolchains="">
-<sourceFile copy="false" path="src\main.c"/>
-<sourceFile copy="false" path="src\a.c"/>
-<headerFile copy="false" path="inc\"/>
-<headerFile copy="false" path="inc\a.h"/>
-<resourceFile copy="true" path="doc\a.rtf"/>
+			cores="KEAZ128M4:Cortex-M0+,KEAZ64M4:Cortex-M0+">
+         <headerFolder
+               copy="false"
+               path="/">
+         </headerFolder>
+         <sourceFolder
+               copy="false"
+               path="/">
+         </sourceFolder>
 </sdk>
 </sdks>

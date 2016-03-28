@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<sdks>
+
+<sdk 		version="1"
+            description="Test SDK loaded from GIT"
+            langs="c only"
+            name="test2"
+            basePath=""
+            internalPath="false"
+			cores="S32K144:M4"
+			symbols="" 
+			toolchains="">
+<sourceFile copy="false" path="src\main.c"/>
+<sourceFile copy="false" path="src\a.c"/>
+<headerFile copy="false" path="inc\"/>
+<headerFile copy="false" path="inc\a.h"/>
+<resourceFile copy="true" path="doc\a.rtf"/>
+</sdk>
+</sdks>

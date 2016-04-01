@@ -2,9 +2,38 @@
 <?eclipse version="3.4"?>
 <sdks>
 <sdk 		version="1.0.0"
-            description="Test SDK loaded from GIT"
-            name="dungtp2"
-			cores="S32K144:M4">
+            description="Test SDK loaded from LOCAL FOR IAR"
+            name="dungtp2_iar_local"
+			cores="S32K144:M4"
+			toolchains="iar.arm.toolchain.v6.1.0">
+         <headerFolder
+               copy="false"
+               path="/">
+         </headerFolder>
+         <sourceFolder
+               copy="false"
+               path="/">
+         </sourceFolder>
+</sdk>
+<sdk 		version="1.0.0"
+            description="Test SDK loaded from LOCAL FOR GCC"
+            name="dungtp2_gcc_local"
+			cores="S32K144:M4"
+			toolchains="com.freescale.s32ds.cross.gnu.arm.cortexm.toolChain">
+         <headerFolder
+               copy="false"
+               path="/">
+         </headerFolder>
+         <sourceFolder
+               copy="false"
+               path="/">
+         </sourceFolder>
+</sdk>
+<sdk 		version="1.0.0"
+            description="Test SDK loaded from LOCAL FOR GHS"
+            name="dungtp2_ghs_local"
+			cores="S32K144:M4"
+			toolchains="ghs.managedmake.arm.executable.toolchain">
          <headerFolder
                copy="false"
                path="/">

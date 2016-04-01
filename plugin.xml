@@ -37,7 +37,7 @@
          </enabledWhen>
       </page>
    </extension>
-    <extension
+   <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension
             targetID="org.eclipse.cdt.ui.CPerspective">
@@ -58,22 +58,60 @@
             name="%PreferencePage.name">
       </page>
    </extension>
-  <extension point="com.freescale.s32ds.cross.sdk.support.sdks">
+   <extension point="com.freescale.s32ds.cross.sdk.support.sdks">
       <sdk	version="1.0.0"
-			name="dungtp2"
-            description="Test SDK loaded from GIT"
-            basePath=""
+			name="dungtp2_gcc_GIT"
+            description="Test SDK loaded from GIT FOR GCC"
             internalPath="false"
 			cores="S32K144:M4"
 			symbols="" 
-			toolchains=""
+           toolchains="com.freescale.s32ds.cross.gnu.arm.cortexm.toolChain"
             gitBranch="master"
             gitPath="https://github.com/dungtp2/B54189.git">
-		<sourceFile copy="false" path="src\main.c"/>
-		<sourceFile copy="false" path="src\a.c"/>
-		<headerFile copy="false" path="inc\"/>
-		<headerFile copy="false" path="inc\a.h"/>
-		<resourceFile copy="true" path="doc\a.rtf"/>
+		<headerFolder
+               copy="false"
+               path="/">
+         </headerFolder>
+         <sourceFolder
+               copy="false"
+               path="/">
+         </sourceFolder>
+      </sdk>
+      <sdk	version="1.0.0"
+			name="dungtp2_ghs_GIT"
+            description="Test SDK loaded from GIT FOR GHS"
+            internalPath="false"
+			cores="S32K144:M4"
+			symbols="" 
+            toolchains="ghs.managedmake.arm.executable.toolchain" 
+            gitBranch="master"
+            gitPath="https://github.com/dungtp2/B54189.git">
+		<headerFolder
+               copy="false"
+               path="/">
+         </headerFolder>
+         <sourceFolder
+               copy="false"
+               path="/">
+         </sourceFolder>
+      </sdk>
+	        <sdk	version="1.0.0"
+			name="dungtp2_iar_GIT"
+            description="Test SDK loaded from GIT for IAR"
+            internalPath="false"
+			cores="S32K144:M4"
+			symbols="" 
+           toolchains="iar.arm.toolchain.v6.1.0"
+            gitBranch="master"
+            gitPath="https://github.com/dungtp2/B54189.git">
+		<headerFolder
+               copy="false"
+               path="/">
+         </headerFolder>
+         <sourceFolder
+               copy="false"
+               path="/">
+         </sourceFolder>
       </sdk>
    </extension>
    <extension
@@ -82,5 +120,45 @@
             class="com.freescale.s32ds.cross.sdk.SDKSupportPlugin">
       </startup>
    </extension>
-
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+               commandId="com.freescale.s32ds.cross.sdk.support.properties"
+               label="%PropertyPage.name"
+               style="push">
+            <visibleWhen>
+               <and>
+                  <iterate
+                        ifEmpty="false"
+                        operator="and">
+                     <or>
+                        <instanceof
+                              value="org.eclipse.core.resources.IProject">
+                        </instanceof>
+                        <instanceof
+                              value="org.eclipse.cdt.core.model.ICProject">
+                        </instanceof>
+                     </or>
+                     <adapt
+                           type="org.eclipse.core.resources.IProject">
+                        <test
+                              property="org.eclipse.core.resources.open"
+                              value="open">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </and>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="com.freescale.s32ds.cross.sdk.ui.internal.SDKSupportPropertiesHandler"
+            commandId="com.freescale.s32ds.cross.sdk.support.properties">
+      </handler>
+   </extension>
 </plugin>
